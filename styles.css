@@ -496,6 +496,17 @@ h3 {
   background: rgba(255, 255, 255, 0.06);
 }
 
+.btn--github {
+  background: linear-gradient(135deg, var(--success), #37b24d);
+  color: #ffffff;
+  box-shadow: 0 12px 32px rgba(81, 207, 102, 0.22);
+}
+
+.btn--github:hover {
+  color: #ffffff;
+  background: linear-gradient(135deg, #69db7c, #2f9e44);
+}
+
 .hero__stats {
   display: flex;
   flex-wrap: wrap;
@@ -1458,6 +1469,16 @@ h3 {
     radial-gradient(ellipse 50% 45% at 0% 0%, color-mix(in srgb, var(--accent) 10%, transparent), transparent 50%);
 }
 
+.feature-card:nth-child(7) {
+  border-color: color-mix(in srgb, #2dd4bf 38%, var(--border));
+}
+
+.feature-card:nth-child(7)::before {
+  background:
+    radial-gradient(ellipse 80% 70% at 0% 50%, color-mix(in srgb, #2dd4bf 22%, transparent), transparent 58%),
+    radial-gradient(ellipse 60% 50% at 100% 0%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 50%);
+}
+
 .feature-card h3 {
   color: var(--text);
 }
@@ -1513,13 +1534,126 @@ h3 {
 
 .privacy-card,
 .install-card {
+  position: relative;
+  overflow: hidden;
   padding: clamp(1.5rem, 4vw, 2.25rem);
   border: 1px solid var(--border);
   border-radius: 20px;
+  background: color-mix(in srgb, var(--surface) 65%, transparent);
+  backdrop-filter: blur(10px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 8px 24px rgba(0, 0, 0, 0.18);
+}
+
+.privacy-card::before,
+.install-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 1;
+}
+
+.privacy-card > *,
+.install-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.privacy-card {
+  border-color: color-mix(in srgb, var(--orb-cyan) 40%, var(--border));
+}
+
+.privacy-card::before {
   background:
-    linear-gradient(145deg, rgba(66, 220, 255, 0.06), transparent 42%),
-    linear-gradient(320deg, rgba(255, 111, 26, 0.05), transparent 38%),
-    var(--surface);
+    radial-gradient(ellipse 90% 80% at 0% 0%, color-mix(in srgb, var(--orb-cyan) 28%, transparent), transparent 58%),
+    radial-gradient(ellipse 60% 50% at 100% 100%, color-mix(in srgb, var(--success) 14%, transparent), transparent 50%);
+}
+
+.install-card {
+  border-color: color-mix(in srgb, var(--accent) 42%, var(--border));
+}
+
+.install-card::before {
+  background:
+    radial-gradient(ellipse 85% 75% at 100% 0%, color-mix(in srgb, var(--accent) 26%, transparent), transparent 55%),
+    radial-gradient(ellipse 55% 45% at 0% 100%, color-mix(in srgb, var(--orb-orange) 14%, transparent), transparent 50%);
+}
+
+.install-card .install-card__lede {
+  max-width: 62ch;
+}
+
+.install-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.install-panel {
+  position: relative;
+  overflow: hidden;
+  padding: 1.25rem 1.2rem 1.35rem;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--surface) 55%, transparent);
+  backdrop-filter: blur(10px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 6px 18px rgba(0, 0, 0, 0.14);
+}
+
+.install-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 1;
+}
+
+.install-panel > * {
+  position: relative;
+  z-index: 1;
+}
+
+.install-panel h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
+}
+
+.install-panel p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.96rem;
+  line-height: 1.55;
+}
+
+.install-panel .btn {
+  margin-top: 1.25rem;
+}
+
+.install-panel--github {
+  border-color: color-mix(in srgb, var(--text) 22%, var(--border));
+}
+
+.install-panel--github::before {
+  background:
+    radial-gradient(ellipse 85% 75% at 0% 0%, color-mix(in srgb, var(--text) 10%, transparent), transparent 58%),
+    radial-gradient(ellipse 55% 50% at 100% 100%, color-mix(in srgb, var(--muted) 8%, transparent), transparent 50%);
+}
+
+.install-panel--store {
+  border-color: color-mix(in srgb, var(--accent) 42%, var(--border));
+}
+
+.install-panel--store::before {
+  background:
+    radial-gradient(ellipse 85% 75% at 100% 0%, color-mix(in srgb, var(--accent) 24%, transparent), transparent 55%),
+    radial-gradient(ellipse 55% 45% at 0% 100%, color-mix(in srgb, var(--orb-orange) 12%, transparent), transparent 50%);
 }
 
 .privacy-list,
@@ -1605,6 +1739,24 @@ h3 {
   color: var(--text);
 }
 
+.site-footer__x {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  transform: translateY(-0.14em);
+  margin-inline-start: 0.1rem;
+  color: var(--muted);
+}
+
+.site-footer__x:hover {
+  color: var(--text);
+}
+
+.site-footer__x svg {
+  display: block;
+}
+
 .legal {
   width: min(720px, calc(100% - 2.5rem));
   margin-inline: auto;
@@ -1662,6 +1814,10 @@ h3 {
 
   .feature-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .install-grid {
+    grid-template-columns: 1fr;
   }
 
   .hero__visual {

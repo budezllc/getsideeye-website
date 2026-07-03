@@ -278,7 +278,7 @@
       <section id="features" class="section">
         <div class="section__intro">
           <p class="eyebrow">Features</p>
-          <h2>Built for browsing with a local brain</h2>
+          <h2>Built for browsing with a local LLM</h2>
           <p>Everything runs where you already keep your models — on your machine, in your browser.</p>
         </div>
         <div class="feature-grid">
@@ -303,8 +303,12 @@
             <p>Optional read-aloud with Supertonic TTS. Models download once; synthesis runs in the browser with a reactive orb control.</p>
           </article>
           <article class="feature-card">
+            <h3>MCP tools via LM Studio</h3>
+            <p>Give local models real capabilities through LM Studio’s MCP support — plug in tools like Brave Search for live internet access, so your on-device LLM can reach beyond its training data.</p>
+          </article>
+          <article class="feature-card">
             <h3>Your settings</h3>
-            <p>Dark or light theme, font size, privacy ignore lists, MCP tools in LM Studio, and per-profile temperature and context length.</p>
+            <p>Dark or light theme, font size, privacy ignore lists, and per-profile temperature and context length.</p>
           </article>
         </div>
       </section>
@@ -357,17 +361,29 @@
           <p class="eyebrow">Install</p>
           <h2>Get Side Eye in Chrome</h2>
           <p class="install-card__lede">
-            Side Eye requires Chrome 114+ for the Side Panel API. Install free from the Chrome Web Store — no build step, no developer mode.
+            Side Eye requires Chrome 114+ for the Side Panel API. Install from the Chrome Web Store or build from source on GitHub.
           </p>
-          <ol class="install-steps">
-            <li>Click <strong>Add to Chrome</strong> on the Chrome Web Store listing.</li>
-            <li>Confirm the install when Chrome prompts you.</li>
-            <li>Pin Side Eye from the extensions menu (puzzle icon) if it is not already on your toolbar.</li>
-            <li>Click the Side Eye icon to open the side panel, then configure LM Studio or Ollama in Options.</li>
-          </ol>
-          <div class="install-card__actions">
-            <a class="btn btn--primary" href="#install" data-store-link id="chrome-store-link">Add to Chrome — Free</a>
-            <a class="btn btn--ghost" href="mailto:hello@getsideeye.com">Contact</a>
+          <div class="install-grid">
+            <div class="install-panel install-panel--github">
+              <h3>Source + Docs on GitHub</h3>
+              <p>Clone the repo, build with npm, and load the unpacked <code>dist</code> folder in Chrome — best for developers or the latest code.</p>
+              <ol class="install-steps">
+                <li>Clone the repo and run <code>npm install</code> and <code>npm run build</code>.</li>
+                <li>Open <code>chrome://extensions</code> and enable <strong>Developer mode</strong>.</li>
+                <li>Click <strong>Load unpacked</strong> and select the <code>dist</code> folder.</li>
+              </ol>
+              <a class="btn btn--github" href="https://github.com/budezllc/side-eye" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+            </div>
+            <div class="install-panel install-panel--store">
+              <h3>Chrome Web Store</h3>
+              <p>The fastest way to install — no build step, no developer mode. Free from the Chrome Web Store.</p>
+              <ol class="install-steps">
+                <li>Click <strong>Add to Chrome</strong> on the Chrome Web Store listing.</li>
+                <li>Confirm the install when Chrome prompts you.</li>
+                <li>Pin Side Eye from the extensions menu, then configure LM Studio or Ollama in Options.</li>
+              </ol>
+              <a class="btn btn--primary" href="#install" data-store-link id="chrome-store-link">Add to Chrome — Free</a>
+            </div>
           </div>
         </div>
       </section>
@@ -388,6 +404,11 @@
         <p class="site-footer__meta">
           <a href="https://getsideeye.com">getsideeye.com</a>
           · Created by <a href="https://kunani.dev" rel="noopener noreferrer">Kei Sakai</a>
+          · <a href="https://x.com/keisakaix" target="_blank" rel="noopener noreferrer" class="site-footer__x" aria-label="Kei Sakai on X">
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+              <path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+            </svg>
+          </a>
         </p>
       </div>
     </footer>
