@@ -1594,9 +1594,12 @@ h3 {
 }
 
 .install-panel {
+  display: flex;
+  flex-direction: column;
   position: relative;
   overflow: hidden;
-  padding: 1.25rem 1.2rem 1.35rem;
+  min-height: 100%;
+  padding: 1.25rem;
   border-radius: 16px;
   border: 1px solid var(--border);
   background: color-mix(in srgb, var(--surface) 55%, transparent);
@@ -1615,9 +1618,20 @@ h3 {
   opacity: 1;
 }
 
-.install-panel > * {
+.install-panel__body,
+.install-panel__actions {
   position: relative;
   z-index: 1;
+}
+
+.install-panel__body {
+  flex: 1 1 auto;
+}
+
+.install-panel__actions {
+  flex: 0 0 auto;
+  margin-top: auto;
+  padding-top: 1.5rem;
 }
 
 .install-panel h3 {
@@ -1632,8 +1646,11 @@ h3 {
   line-height: 1.55;
 }
 
-.install-panel .btn {
-  margin-top: 1.25rem;
+.install-panel .install-steps {
+  margin: 1rem 0 0;
+  padding-left: 1.2rem;
+  font-size: 0.96rem;
+  line-height: 1.55;
 }
 
 .install-panel--github {
