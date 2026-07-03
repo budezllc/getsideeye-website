@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Support — Side Eye</title>
+    <meta name="description" content="Get help with the Side Eye Chrome extension." />
+    <link rel="canonical" href="https://getsideeye.com/support.html" />
+    <meta name="theme-color" content="#1a1b1e" />
+    <link rel="icon" href="/assets/icon128.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <a class="brand" href="/">
+        <img class="brand__icon" src="/assets/icon128.png" width="32" height="32" alt="" />
+        <span class="brand__name">Side Eye</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="/#features">Features</a>
+        <a href="/#install">Install</a>
+        <a href="/support.html" aria-current="page">Support</a>
+      </nav>
+    </header>
+
+    <main id="main" class="legal">
+      <article class="legal__article">
+        <p class="eyebrow">Help</p>
+        <h1>Support</h1>
+
+        <p>Side Eye is a local-first Chrome extension. Most issues relate to LM Studio, Ollama, or browser permissions.</p>
+
+        <h2>Contact</h2>
+        <p>
+          Email:
+          <a href="mailto:hello@getsideeye.com">hello@getsideeye.com</a>
+        </p>
+
+        <h2>Before you write</h2>
+        <ul>
+          <li>Chrome version (need <strong>114+</strong> for the side panel)</li>
+          <li>Side Eye version (from <code>chrome://extensions</code>)</li>
+          <li>AI profile in use (LM Studio or Ollama) and whether the local server is running</li>
+          <li>Steps to reproduce and any error text from the side panel</li>
+        </ul>
+
+        <h2>Common fixes</h2>
+        <ul>
+          <li><strong>No reply / connection error</strong> — confirm LM Studio or <code>ollama serve</code> is running and the server URL in Options matches.</li>
+          <li><strong>CORS / 403 from local server</strong> — Side Eye is a Chrome extension and needs CORS enabled on your AI server. <strong>LM Studio:</strong> Local Server &rarr; Server Settings &rarr; turn on <strong>CORS</strong>. <strong>Ollama:</strong> set <code>OLLAMA_ORIGINS</code> to <code>*</code>, then restart Ollama. On Windows, add it under Environment Variables; on macOS, run <code>launchctl setenv OLLAMA_ORIGINS &quot;*&quot;</code> and quit/reopen the Ollama app.</li>
+          <li><strong>Page context empty</strong> — enable the eye icon; check the domain is not on your ignore list.</li>
+          <li><strong>Voice not working</strong> — enable Speech in Options and wait for the model download to finish; try Re-download models if needed.</li>
+          <li><strong>Extension not visible</strong> — click the puzzle icon in Chrome and pin Side Eye; then open the side panel from the toolbar icon.</li>
+        </ul>
+
+        <h2>Policies</h2>
+        <p>
+          <a href="/privacy-policy.html">Privacy Policy</a>
+          ·
+          <a href="/terms.html">Terms of Service</a>
+        </p>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <p class="site-footer__brand">
+          <img src="/assets/icon128.png" width="24" height="24" alt="" />
+          Side Eye
+        </p>
+        <nav class="site-footer__links" aria-label="Legal and support">
+          <a href="/privacy-policy.html">Privacy Policy</a>
+          <a href="/terms.html">Terms of Service</a>
+          <a href="/support.html" aria-current="page">Support</a>
+          <a href="mailto:hello@getsideeye.com">Contact</a>
+        </nav>
+        <p class="site-footer__meta">
+          <a href="https://getsideeye.com">getsideeye.com</a>
+          · Created by <a href="https://kunani.dev" rel="noopener noreferrer">Kei Sakai</a>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

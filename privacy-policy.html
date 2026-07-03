@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Privacy Policy — Side Eye</title>
+    <meta name="description" content="Privacy Policy for the Side Eye Chrome extension." />
+    <link rel="canonical" href="https://getsideeye.com/privacy-policy.html" />
+    <meta name="theme-color" content="#1a1b1e" />
+    <link rel="icon" href="/assets/icon128.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <a class="brand" href="/">
+        <img class="brand__icon" src="/assets/icon128.png" width="32" height="32" alt="" />
+        <span class="brand__name">Side Eye</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="/#features">Features</a>
+        <a href="/#install">Install</a>
+        <a href="/support.html">Support</a>
+      </nav>
+    </header>
+
+    <main id="main" class="legal">
+      <article class="legal__article">
+        <p class="eyebrow">Legal</p>
+        <h1>Privacy Policy</h1>
+        <p class="legal__meta">Last updated: July 2, 2026</p>
+
+        <p>
+          This Privacy Policy describes how <strong>Side Eye</strong> (“the Extension”), operated by
+          <strong>Kei Sakai</strong> (“we”, “us”), handles information when you use our Chrome extension and
+          related site at <a href="https://getsideeye.com">getsideeye.com</a>.
+        </p>
+
+        <h2>Summary</h2>
+        <p>
+          Side Eye is <strong>local-first</strong>. Chat history, settings, and optional API keys stay on your
+          device. Page content is read in your browser only when you enable page context and is sent to the AI
+          server <strong>you configure</strong> (typically LM Studio or Ollama on <code>localhost</code>). We do
+          not operate a cloud backend for your chats and do not sell your data.
+        </p>
+
+        <h2>Information the Extension processes</h2>
+        <h3>Stored on your device</h3>
+        <ul>
+          <li><strong>Chat history</strong> — stored in <code>chrome.storage.local</code>, per browser window.</li>
+          <li>
+            <strong>Settings</strong> — profiles, UI preferences, quick actions, ignored domains, and TTS
+            options. Most settings sync via <code>chrome.storage.sync</code> if Chrome sync is enabled on your
+            profile.
+          </li>
+          <li>
+            <strong>Optional API keys</strong> — stored in <code>chrome.storage.local</code> only; not synced.
+          </li>
+          <li>
+            <strong>TTS model cache</strong> — when you enable Voice, Supertonic model files are downloaded and
+            cached in browser storage (IndexedDB) on your device.
+          </li>
+        </ul>
+
+        <h3>Read from web pages (when you use page context)</h3>
+        <p>When page context is enabled and the domain is not on your ignore list, the Extension may read:</p>
+        <ul>
+          <li>Page URL and title</li>
+          <li>Your text selection (if any)</li>
+          <li>A readable excerpt from the page DOM</li>
+        </ul>
+        <p>
+          This content is included in prompts only when your message or a quick action implies the page is
+          relevant. You can turn page context off per chat or block domains in Settings.
+        </p>
+
+        <h3>Images you attach</h3>
+        <p>
+          Images you paste or upload are resized in the browser and sent to your configured AI server when you
+          send a message that includes them.
+        </p>
+
+        <h2>Where data is sent</h2>
+        <ul>
+          <li>
+            <strong>Your AI server</strong> — LM Studio, Ollama, or another URL you set. Traffic goes directly
+            from the Extension to that server (usually <code>localhost</code> or your LAN). We do not receive
+            these requests.
+          </li>
+          <li>
+            <strong>Hugging Face</strong> — if you enable Voice, the Extension downloads Supertonic TTS model
+            files from Hugging Face (<code>huggingface.co</code>). No chat content is sent there.
+          </li>
+        </ul>
+        <p>
+          The Extension does <strong>not</strong> include analytics, advertising, or third-party tracking
+          SDKs.
+        </p>
+
+        <h2>Permissions and why we request them</h2>
+        <ul>
+          <li><strong>sidePanel</strong> — show the chat UI beside the current tab.</li>
+          <li><strong>storage / unlimitedStorage</strong> — save chats, settings, and TTS model cache.</li>
+          <li><strong>activeTab, tabs, scripting, webNavigation</strong> — link chats to browser tabs, read page context from the linked tab, and show favicons.</li>
+          <li><strong>Host access (<code>http://*/*</code>, <code>https://*/*</code>)</strong> — inject a content script to extract page context when you request it; connect to user-configured AI base URLs (including localhost and LAN).</li>
+        </ul>
+
+        <h2>Data retention and deletion</h2>
+        <p>
+          Data remains on your device until you clear it. You can clear chat history from the Extension, remove
+          ignored-domain and profile settings in Options, uninstall the Extension, or clear extension data in
+          <code>chrome://extensions</code>.
+        </p>
+
+        <h2>Children</h2>
+        <p>Side Eye is not directed at children under 13, and we do not knowingly collect personal information from children.</p>
+
+        <h2>Changes</h2>
+        <p>
+          We may update this policy. The “Last updated” date at the top will change when we do. Continued use of
+          the Extension after changes means you accept the updated policy.
+        </p>
+
+        <h2>Contact</h2>
+        <p>
+          Questions about this policy:
+          <a href="mailto:hello@getsideeye.com">hello@getsideeye.com</a>
+        </p>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <p class="site-footer__brand">
+          <img src="/assets/icon128.png" width="24" height="24" alt="" />
+          Side Eye
+        </p>
+        <nav class="site-footer__links" aria-label="Legal and support">
+          <a href="/privacy-policy.html">Privacy Policy</a>
+          <a href="/terms.html">Terms of Service</a>
+          <a href="/support.html">Support</a>
+          <a href="mailto:hello@getsideeye.com">Contact</a>
+        </nav>
+        <p class="site-footer__meta">
+          <a href="https://getsideeye.com">getsideeye.com</a>
+          · Created by <a href="https://kunani.dev" rel="noopener noreferrer">Kei Sakai</a>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

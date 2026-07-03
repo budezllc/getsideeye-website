@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Side Eye — Local AI chat in Chrome’s side panel</title>
+    <meta
+      name="description"
+      content="Side Eye is a Chrome extension for local-first AI chat. Read the page you’re on, stream replies from LM Studio or Ollama, and keep everything on your machine."
+    />
+    <link rel="canonical" href="https://getsideeye.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://getsideeye.com/" />
+    <meta property="og:title" content="Side Eye — Local AI in your side panel" />
+    <meta
+      property="og:description"
+      content="Chat with local models beside the tab you’re browsing. Page context, streaming replies, optional on-device voice."
+    />
+    <meta property="og:image" content="https://getsideeye.com/assets/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#1a1b1e" />
+    <link rel="icon" href="/assets/icon128.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/assets/icon512.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div class="ambient" aria-hidden="true">
+      <div class="ambient__glow ambient__glow--cyan"></div>
+      <div class="ambient__glow ambient__glow--amber"></div>
+      <div class="ambient__glow ambient__glow--core"></div>
+      <span class="ambient__orbit ambient__orbit--a"></span>
+      <span class="ambient__orbit ambient__orbit--b"></span>
+      <span class="ambient__orbit ambient__orbit--c"></span>
+      <div class="ambient__stars"></div>
+    </div>
+
+    <header class="site-header">
+      <a class="brand" href="/">
+        <img class="brand__icon" src="/assets/icon128.png" width="32" height="32" alt="" />
+        <span class="brand__name">Side Eye</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#privacy">Privacy</a>
+        <a class="site-nav__cta" href="#install" data-store-link>Add to Chrome</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero">
+        <div class="hero__copy">
+          <p class="eyebrow">Chrome extension · Local models only</p>
+          <h1>Privately Chat, Research, and Command your local LLM in the Chrome Sidebar.</h1>
+          <p class="hero__lede">
+            Side Eye lives in Chrome’s side panel — beside the tab you’re on. It reads page context when you want it,
+            streams answers from <a href="https://lmstudio.ai/" target="_blank" rel="noopener noreferrer">LM Studio</a> or <a href="https://ollama.com/" target="_blank" rel="noopener noreferrer">Ollama</a> on your machine, and never sends your chats to the cloud.
+          </p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#install" data-store-link>Add to Chrome</a>
+            <a class="btn btn--ghost" href="#features">See what it does</a>
+          </div>
+          <ul class="hero__stats" aria-label="Highlights">
+            <li><strong>Local-first</strong> <a href="https://lmstudio.ai/" target="_blank" rel="noopener noreferrer">LM Studio</a> &amp; <a href="https://ollama.com/" target="_blank" rel="noopener noreferrer">Ollama</a></li>
+            <li><strong>Page-aware</strong> context on your terms</li>
+            <li><strong>Optional voice</strong> <a href="https://supertonictts.com/" target="_blank" rel="noopener noreferrer">Supertonic</a> TTS</li>
+          </ul>
+        </div>
+
+        <div class="hero__visual" aria-hidden="true">
+          <div class="chrome-mock">
+            <div class="chrome-mock__tabs">
+              <div class="chrome-mock__tab">
+                <span class="chrome-mock__tab-favicon chrome-mock__tab-favicon--muted"></span>
+                <span class="chrome-mock__tab-label">New Tab</span>
+              </div>
+              <div class="chrome-mock__tab chrome-mock__tab--active">
+                <img class="chrome-mock__tab-favicon" src="/assets/icon128.png" width="16" height="16" alt="" />
+                <span class="chrome-mock__tab-label">Side Eye — Local AI chat in Chrome’s side panel</span>
+              </div>
+              <div class="chrome-mock__tab">
+                <span class="chrome-mock__tab-favicon chrome-mock__tab-favicon--muted"></span>
+                <span class="chrome-mock__tab-label">Chrome Web Store</span>
+              </div>
+            </div>
+
+            <div class="chrome-mock__toolbar">
+              <div class="chrome-mock__nav">
+                <span class="chrome-mock__nav-btn" aria-hidden="true">‹</span>
+                <span class="chrome-mock__nav-btn" aria-hidden="true">›</span>
+                <span class="chrome-mock__nav-btn chrome-mock__nav-btn--reload" aria-hidden="true">↻</span>
+              </div>
+              <div class="chrome-mock__omnibox">
+                <span class="chrome-mock__lock" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" width="12" height="12"><path fill="currentColor" d="M4.5 7V5a3.5 3.5 0 0 1 7 0v2h.5A1.5 1.5 0 0 1 13 8.5v5A1.5 1.5 0 0 1 11.5 15h-7A1.5 1.5 0 0 1 3 13.5v-5A1.5 1.5 0 0 1 4.5 7Zm2 0V5a2 2 0 1 1 4 0v2H6.5Z"/></svg>
+                </span>
+                <span class="chrome-mock__url">getsideeye.com</span>
+              </div>
+            </div>
+
+            <div class="chrome-mock__viewport">
+              <div class="chrome-mock__page">
+                <div class="chrome-mock__page-header">
+                  <span class="chrome-mock__page-brand">
+                    <img src="/assets/icon128.png" width="20" height="20" alt="" />
+                    Side Eye
+                  </span>
+                  <span class="chrome-mock__page-nav">Features · How it works · Privacy · Install</span>
+                </div>
+                <div class="chrome-mock__page-hero">
+                  <p class="chrome-mock__page-eyebrow">Chrome extension · Local models only</p>
+                  <p class="chrome-mock__page-title">Privately chat with your local LLM in Chrome.</p>
+                  <p class="chrome-mock__page-lede">
+                    Side Eye lives in Chrome’s side panel — beside the tab you’re on.
+                  </p>
+                  <div class="chrome-mock__page-actions">
+                    <span class="chrome-mock__page-btn chrome-mock__page-btn--primary">Add to Chrome</span>
+                    <span class="chrome-mock__page-btn">See what it does</span>
+                  </div>
+                </div>
+              </div>
+
+              <aside class="se-panel">
+                <div class="se-app">
+                  <header class="se-header">
+                    <div class="se-header-tabs">
+                      <div class="se-tab-strip">
+                        <div class="se-agent-tab se-agent-tab--active">
+                          <img class="se-agent-tab-icon" src="/assets/icon128.png" width="16" height="16" alt="" />
+                          <span class="se-agent-tab-title">Side Eye — Local AI chat in Chrome’s sid…</span>
+                          <span class="se-agent-tab-close">×</span>
+                        </div>
+                      </div>
+                      <span class="se-icon-btn se-tab-add-btn">+</span>
+                    </div>
+                    <span class="se-icon-btn se-refresh-btn" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74" />
+                        <path d="M21 3v5h-5" />
+                        <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74" />
+                        <path d="M3 21v-5h5" />
+                      </svg>
+                    </span>
+                  </header>
+
+                  <div class="se-context-bar">
+                    <div class="se-context-bar-left">
+                      <span class="se-context-icon-btn se-context-icon-btn--on">
+                        <svg viewBox="0 0 32 32" aria-hidden="true">
+                          <rect width="32" height="32" rx="7" fill="#fff" />
+                          <rect x="1.15" y="1.15" width="29.7" height="29.7" rx="5.85" fill="#0ea5c9" />
+                          <circle cx="16" cy="16" r="13" fill="#fff" />
+                          <circle cx="12.6" cy="16" r="5.2" fill="#ff6f1a" />
+                        </svg>
+                      </span>
+                      <span class="se-context-label">127.0.0.1</span>
+                    </div>
+                    <div class="se-quick-actions">
+                      <span class="se-quick-action-btn">Summarize</span>
+                      <span class="se-quick-action-btn">Related</span>
+                      <span class="se-quick-action-btn">Reviews</span>
+                    </div>
+                  </div>
+
+                  <div class="se-messages-wrap se-messages-wrap--empty">
+                    <div class="se-messages-ambient" aria-hidden="true">
+                      <span class="se-ambient-glow se-ambient-glow--core"></span>
+                      <span class="se-ambient-glow se-ambient-glow--cyan"></span>
+                      <span class="se-ambient-orbit se-ambient-orbit--a"></span>
+                      <span class="se-ambient-orbit se-ambient-orbit--b"></span>
+                      <span class="se-ambient-orbit se-ambient-orbit--c"></span>
+                      <span class="se-ambient-stars"></span>
+                    </div>
+                    <div class="se-messages">
+                      <div class="se-empty-state">
+                        <div class="se-empty-state-header">
+                          <img class="se-empty-state-favicon" src="/assets/icon128.png" width="28" height="28" alt="" />
+                          <div class="se-empty-state-header-text">
+                            <div class="se-empty-state-title">Side Eye — Local AI chat in Chrome’s side panel</div>
+                            <div class="se-empty-state-host">127.0.0.1</div>
+                          </div>
+                        </div>
+                        <div class="se-empty-state-divider">Try asking…</div>
+                        <div class="se-suggestion-chips">
+                          <span class="se-suggestion-chip"><span class="se-suggestion-chip-label">Summarize</span></span>
+                          <span class="se-suggestion-chip"><span class="se-suggestion-chip-label">Related</span></span>
+                          <span class="se-suggestion-chip"><span class="se-suggestion-chip-label">Reviews</span></span>
+                        </div>
+                        <div class="se-empty-state-section">
+                          <p class="se-empty-state-section-label">Suggested for this page</p>
+                          <div class="se-suggestion-chips">
+                            <span class="se-suggestion-chip se-suggestion-chip--highlight">
+                              <span class="se-suggestion-chip-label">What can you tell me about this page?</span>
+                              <span class="se-suggestion-chip-preview">Uses page context</span>
+                            </span>
+                            <span class="se-suggestion-chip se-suggestion-chip--highlight">
+                              <span class="se-suggestion-chip-label">Is anything missing here?</span>
+                              <span class="se-suggestion-chip-preview">Uses page context</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="se-bottom-panel">
+                    <div class="se-profile-bar">
+                      <span class="se-profile-picker-btn">
+                        <span class="se-profile-picker-dot se-profile-picker-dot--ollama"></span>
+                        <span class="se-profile-picker-label">Ollama · gemma2:latest</span>
+                        <span class="se-profile-picker-chevron">▾</span>
+                      </span>
+                    </div>
+                    <footer class="se-composer">
+                      <div class="se-composer-row">
+                        <span class="se-composer-icon-btn" aria-hidden="true">
+                          <svg viewBox="0 0 24 24">
+                            <path d="M4 16l4.586-4.586a2 2 0 0 1 2.828 0L16 16m-2-2l1.586-1.586a2 2 0 0 1 2.828 0L20 14M4 6h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+                            <circle cx="8.5" cy="8.5" r="1.75" fill="currentColor" stroke="none" />
+                          </svg>
+                        </span>
+                        <span class="se-prompt-input">What is thy bidding, my Master</span>
+                        <span class="se-composer-icon-btn se-voice-btn" aria-hidden="true">
+                          <svg class="se-jarvis-orb" viewBox="0 0 32 32">
+                            <defs>
+                              <radialGradient id="mock-jarvis-core-grad" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stop-color="#fff8ef" />
+                                <stop offset="40%" stop-color="#ffc46b" />
+                                <stop offset="100%" stop-color="#ff6f1a" />
+                              </radialGradient>
+                              <radialGradient id="mock-jarvis-shell-grad" cx="50%" cy="50%" r="50%">
+                                <stop offset="55%" stop-color="transparent" />
+                                <stop offset="78%" stop-color="#3dd6ff33" />
+                                <stop offset="100%" stop-color="transparent" />
+                              </radialGradient>
+                              <filter id="mock-jarvis-glow-filter" x="-80%" y="-80%" width="260%" height="260%">
+                                <feGaussianBlur stdDeviation="1.4" />
+                              </filter>
+                            </defs>
+                            <circle class="se-jarvis-shell" cx="16" cy="16" r="14.5" fill="url(#mock-jarvis-shell-grad)" />
+                            <g class="se-jarvis-orbit se-jarvis-orbit-a">
+                              <ellipse cx="16" cy="16" rx="11.5" ry="4.8" fill="none" stroke="#ff9a38" stroke-width="0.85" stroke-dasharray="2.5 4.5" opacity="0.9" />
+                            </g>
+                            <g class="se-jarvis-orbit se-jarvis-orbit-b">
+                              <ellipse cx="16" cy="16" rx="5.2" ry="11.5" fill="none" stroke="#42dcff" stroke-width="0.75" stroke-dasharray="2 3.5" opacity="0.82" />
+                            </g>
+                            <g class="se-jarvis-orbit se-jarvis-orbit-c">
+                              <circle cx="16" cy="16" r="8.2" fill="none" stroke="#ffd18a" stroke-width="0.55" stroke-dasharray="1.2 3.2" opacity="0.65" />
+                            </g>
+                            <g class="se-jarvis-arcs">
+                              <path class="se-jarvis-arc se-jarvis-arc-a" d="M9.5 11.5 Q16 7.5 22.5 12.8" fill="none" stroke="#6cecff" stroke-width="0.95" stroke-linecap="round" />
+                              <path class="se-jarvis-arc se-jarvis-arc-b" d="M8.8 18.2 Q16 23 23.2 17.4" fill="none" stroke="#ff8f3a" stroke-width="0.8" stroke-linecap="round" />
+                              <path class="se-jarvis-arc se-jarvis-arc-c" d="M11 9.2 Q16 14.5 21 10.2" fill="none" stroke="#9ef6ff" stroke-width="0.65" stroke-linecap="round" opacity="0.75" />
+                            </g>
+                            <circle class="se-jarvis-core-glow" cx="16" cy="16" r="5.2" fill="#ffb347" filter="url(#mock-jarvis-glow-filter)" opacity="0.45" />
+                            <circle class="se-jarvis-core" cx="16" cy="16" r="3.6" fill="url(#mock-jarvis-core-grad)" />
+                          </svg>
+                        </span>
+                        <span class="se-send-btn">Send</span>
+                      </div>
+                    </footer>
+                  </div>
+                </div>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="features" class="section">
+        <div class="section__intro">
+          <p class="eyebrow">Features</p>
+          <h2>Built for browsing with a local brain</h2>
+          <p>Everything runs where you already keep your models — on your machine, in your browser.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <h3>Side panel chat</h3>
+            <p>Open Side Eye beside any tab. Multiple chat tabs, streaming markdown replies, and a profile picker for LM Studio or Ollama.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Page context</h3>
+            <p>Toggle the eye to include URL, selection, and readable page text — only when your message needs it. Ignore sensitive domains entirely.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Vision &amp; images</h3>
+            <p>Attach up to eight images per message. Vision works with capable local models through LM Studio or Ollama’s native APIs.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Quick actions</h3>
+            <p>Summarize, find related sites, or run custom prompts from the context bar. Starter chips adapt to articles, docs, social, and more.</p>
+          </article>
+          <article class="feature-card">
+            <h3>On-device voice</h3>
+            <p>Optional read-aloud with Supertonic TTS. Models download once; synthesis runs in the browser with a reactive orb control.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Your settings</h3>
+            <p>Dark or light theme, font size, privacy ignore lists, MCP tools in LM Studio, and per-profile temperature and context length.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="how-it-works" class="section section--split">
+        <div class="section__intro">
+          <p class="eyebrow">How it works</p>
+          <h2>Three steps to a side glance</h2>
+        </div>
+        <ol class="steps">
+          <li class="step">
+            <span class="step__index">1</span>
+            <div>
+              <h3>Run a local model</h3>
+              <p>Start LM Studio or <code>ollama serve</code> on your machine. Enable <strong>CORS</strong> in LM Studio server settings, or set <code>OLLAMA_ORIGINS</code> for Ollama. Side Eye talks to <code>localhost</code> — no API keys required for local profiles.</p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step__index">2</span>
+            <div>
+              <h3>Install the extension</h3>
+              <p>Add Side Eye from the <strong>Chrome Web Store</strong>, open the side panel from the toolbar, and pick your AI profile in the footer.</p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step__index">3</span>
+            <div>
+              <h3>Chat with context</h3>
+              <p>Turn on page context when you want the current tab included. Ask naturally — “summarize this page”, “explain this selection”, or paste images.</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <section id="privacy" class="section section--privacy">
+        <div class="privacy-card">
+          <p class="eyebrow">Privacy</p>
+          <h2>Your data stays yours</h2>
+          <ul class="privacy-list">
+            <li>Chat history lives in <strong>chrome.storage.local</strong> on your device.</li>
+            <li>Page excerpts are read in-browser and sent only to <strong>your local model</strong>.</li>
+            <li>Ignored domains are never read — banking, mail, or anything you block in settings.</li>
+            <li>Optional TTS models download from Hugging Face once; speech runs on-device.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="install" class="section section--install">
+        <div class="install-card">
+          <p class="eyebrow">Install</p>
+          <h2>Get Side Eye in Chrome</h2>
+          <p class="install-card__lede">
+            Side Eye requires Chrome 114+ for the Side Panel API. Install free from the Chrome Web Store — no build step, no developer mode.
+          </p>
+          <ol class="install-steps">
+            <li>Click <strong>Add to Chrome</strong> on the Chrome Web Store listing.</li>
+            <li>Confirm the install when Chrome prompts you.</li>
+            <li>Pin Side Eye from the extensions menu (puzzle icon) if it is not already on your toolbar.</li>
+            <li>Click the Side Eye icon to open the side panel, then configure LM Studio or Ollama in Options.</li>
+          </ol>
+          <div class="install-card__actions">
+            <a class="btn btn--primary" href="#install" data-store-link id="chrome-store-link">Add to Chrome — Free</a>
+            <a class="btn btn--ghost" href="mailto:hello@getsideeye.com">Contact</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <p class="site-footer__brand">
+          <img src="/assets/icon128.png" width="24" height="24" alt="" />
+          Side Eye
+        </p>
+        <nav class="site-footer__links" aria-label="Legal and support">
+          <a href="/privacy-policy.html">Privacy Policy</a>
+          <a href="/terms.html">Terms of Service</a>
+          <a href="/support.html">Support</a>
+          <a href="mailto:hello@getsideeye.com">Contact</a>
+        </nav>
+        <p class="site-footer__meta">
+          <a href="https://getsideeye.com">getsideeye.com</a>
+          · Created by <a href="https://kunani.dev" rel="noopener noreferrer">Kei Sakai</a>
+        </p>
+      </div>
+    </footer>
+
+    <script src="/main.js" defer></script>
+  </body>
+</html>
