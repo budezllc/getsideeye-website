@@ -35,7 +35,7 @@
       <article class="legal__article">
         <p class="eyebrow">Legal</p>
         <h1>Privacy Policy</h1>
-        <p class="legal__meta">Last updated: July 2, 2026</p>
+        <p class="legal__meta">Last updated: July 15, 2026</p>
 
         <p>
           This Privacy Policy describes how <strong>Side Eye</strong> (“the Extension”), operated by
@@ -46,9 +46,10 @@
         <h2>Summary</h2>
         <p>
           Side Eye is <strong>local-first</strong>. Chat history, settings, and optional API keys stay on your
-          device. Page content is read in your browser only when you enable page context and is sent to the AI
-          server <strong>you configure</strong> (typically LM Studio or Ollama on <code>localhost</code>). We do
-          not operate a cloud backend for your chats and do not sell your data.
+          device. You can chat with <strong>LiteRT-LM</strong> (Gemma 4 on-device in Chrome via WebGPU) or with an
+          AI server <strong>you configure</strong> (typically LM Studio or Ollama on <code>localhost</code>).
+          Page content is read in your browser only when you enable page context. We do not operate a cloud
+          backend for your chats and do not sell your data.
         </p>
 
         <h2>Information the Extension processes</h2>
@@ -62,6 +63,10 @@
           </li>
           <li>
             <strong>Optional API keys</strong> — stored in <code>chrome.storage.local</code> only; not synced.
+          </li>
+          <li>
+            <strong>LiteRT-LM model cache</strong> — when you load the LiteRT-LM profile, Gemma 4 model files are
+            downloaded and cached in browser storage (IndexedDB) on your device.
           </li>
           <li>
             <strong>TTS model cache</strong> — when you enable Voice, Supertonic model files are downloaded and
@@ -83,20 +88,27 @@
 
         <h3>Images you attach</h3>
         <p>
-          Images you paste or upload are resized in the browser and sent to your configured AI server when you
-          send a message that includes them.
+          Images you paste or upload are resized in the browser and sent to your configured AI server (LM Studio
+          or Ollama) when you send a message that includes them. Image attachments are not supported for the
+          LiteRT-LM profile.
         </p>
 
         <h2>Where data is sent</h2>
         <ul>
           <li>
-            <strong>Your AI server</strong> — LM Studio, Ollama, or another URL you set. Traffic goes directly
-            from the Extension to that server (usually <code>localhost</code> or your LAN). We do not receive
-            these requests.
+            <strong>On-device (LiteRT-LM)</strong> — when you use the LiteRT-LM profile, prompts and model
+            outputs are processed in the Extension using WebGPU. Chat content is not sent to us or to a remote
+            inference API for that profile.
           </li>
           <li>
-            <strong>Hugging Face</strong> — if you enable Voice, the Extension downloads Supertonic TTS model
-            files from Hugging Face (<code>huggingface.co</code>). No chat content is sent there.
+            <strong>Your AI server</strong> — for LM Studio, Ollama, or another URL you set, traffic goes
+            directly from the Extension to that server (usually <code>localhost</code> or your LAN). We do not
+            receive these requests.
+          </li>
+          <li>
+            <strong>Hugging Face</strong> — the Extension downloads LiteRT-LM (Gemma 4) model files when you
+            load that profile, and optionally Supertonic TTS model files when you enable Voice, from Hugging Face
+            (<code>huggingface.co</code>). No chat content is sent there.
           </li>
         </ul>
         <p>
@@ -107,9 +119,12 @@
         <h2>Permissions and why we request them</h2>
         <ul>
           <li><strong>sidePanel</strong> — show the chat UI beside the current tab.</li>
-          <li><strong>storage / unlimitedStorage</strong> — save chats, settings, and TTS model cache.</li>
+          <li>
+            <strong>storage / unlimitedStorage</strong> — save chats, settings, and on-device model caches
+            (LiteRT-LM and optional TTS).
+          </li>
           <li><strong>activeTab, tabs, scripting, webNavigation</strong> — link chats to browser tabs, read page context from the linked tab, and show favicons.</li>
-          <li><strong>Host access (<code>http://*/*</code>, <code>https://*/*</code>)</strong> — inject a content script to extract page context when you request it; connect to user-configured AI base URLs (including localhost and LAN).</li>
+          <li><strong>Host access (<code>http://*/*</code>, <code>https://*/*</code>)</strong> — inject a content script to extract page context when you request it; connect to user-configured AI base URLs (including localhost and LAN); download model files from Hugging Face when you choose to load them.</li>
         </ul>
 
         <h2>Data retention and deletion</h2>

@@ -6,7 +6,7 @@
     <title>Side Eye — Local AI chat in Chrome’s side panel</title>
     <meta
       name="description"
-      content="Side Eye is a Chrome extension for local-first AI chat. Read the page you’re on, stream replies from LM Studio or Ollama, and keep everything on your machine."
+      content="Side Eye is a Chrome extension for local-first AI chat. Run Gemma 4 on-device with LiteRT-LM, or connect LM Studio and Ollama — page context, streaming replies, optional voice."
     />
     <link rel="canonical" href="https://getsideeye.com/" />
     <meta property="og:type" content="website" />
@@ -14,7 +14,7 @@
     <meta property="og:title" content="Side Eye — Local AI in your side panel" />
     <meta
       property="og:description"
-      content="Chat with local models beside the tab you’re browsing. Page context, streaming replies, optional on-device voice."
+      content="On-device Gemma 4 via LiteRT-LM, or LM Studio and Ollama. Page context, streaming replies, optional voice — all beside the tab you’re browsing."
     />
     <meta property="og:image" content="https://getsideeye.com/assets/og-image.png" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -51,26 +51,30 @@
         <a href="#features">Features</a>
         <a href="#how-it-works">How it works</a>
         <a href="#privacy">Privacy</a>
-        <a class="site-nav__cta" href="#install" data-store-link>Add to Chrome</a>
+        <a class="site-nav__cta" href="https://chromewebstore.google.com/detail/side-eye/mjlmbddfgplihcadmpaeggdeneljklnh" target="_blank" rel="noopener noreferrer" data-store-link>Add to Chrome</a>
       </nav>
     </header>
 
     <main id="main">
       <section class="hero">
         <div class="hero__copy">
-          <p class="eyebrow">Chrome extension · Local models only</p>
+          <p class="eyebrow">Chrome extension · On-device &amp; local models</p>
           <h1>Privately Chat, Research, and Command your local LLM in the Chrome Sidebar.</h1>
           <p class="hero__lede">
-            Side Eye lives in Chrome’s side panel — beside the tab you’re on. It reads page context when you want it,
-            streams answers from <a href="https://lmstudio.ai/" target="_blank" rel="noopener noreferrer">LM Studio</a> or <a href="https://ollama.com/" target="_blank" rel="noopener noreferrer">Ollama</a> on your machine, and never sends your chats to the cloud.
+            Side Eye lives in Chrome’s side panel — beside the tab you’re on. Chat with
+            <a href="https://ai.google.dev/edge/litert-lm/js" target="_blank" rel="noopener noreferrer">LiteRT-LM</a>
+            (Gemma 4 on-device via WebGPU), or stream from
+            <a href="https://lmstudio.ai/" target="_blank" rel="noopener noreferrer">LM Studio</a> or
+            <a href="https://ollama.com/" target="_blank" rel="noopener noreferrer">Ollama</a> on your machine.
+            Page context stays optional. Your chats never go to our servers.
           </p>
           <div class="hero__actions">
-            <a class="btn btn--primary" href="#install" data-store-link>Add to Chrome</a>
+            <a class="btn btn--primary" href="https://chromewebstore.google.com/detail/side-eye/mjlmbddfgplihcadmpaeggdeneljklnh" target="_blank" rel="noopener noreferrer" data-store-link>Add to Chrome</a>
             <a class="btn btn--ghost" href="#features">See what it does</a>
           </div>
           <ul class="hero__stats" aria-label="Highlights">
-            <li><strong>Local-first</strong> <a href="https://lmstudio.ai/" target="_blank" rel="noopener noreferrer">LM Studio</a> &amp; <a href="https://ollama.com/" target="_blank" rel="noopener noreferrer">Ollama</a></li>
-            <li><strong>Page-aware</strong> context on your terms</li>
+            <li><strong>On-device</strong> <a href="https://ai.google.dev/edge/litert-lm/js" target="_blank" rel="noopener noreferrer">LiteRT-LM</a> · Gemma 4</li>
+            <li><strong>Local servers</strong> <a href="https://lmstudio.ai/" target="_blank" rel="noopener noreferrer">LM Studio</a> &amp; <a href="https://ollama.com/" target="_blank" rel="noopener noreferrer">Ollama</a></li>
             <li><strong>Optional voice</strong> <a href="https://supertonictts.com/" target="_blank" rel="noopener noreferrer">Supertonic</a> TTS</li>
           </ul>
         </div>
@@ -116,7 +120,7 @@
                   <span class="chrome-mock__page-nav">Features · How it works · Privacy · Install</span>
                 </div>
                 <div class="chrome-mock__page-hero">
-                  <p class="chrome-mock__page-eyebrow">Chrome extension · Local models only</p>
+                  <p class="chrome-mock__page-eyebrow">Chrome extension · On-device &amp; local</p>
                   <p class="chrome-mock__page-title">Privately chat with your local LLM in Chrome.</p>
                   <p class="chrome-mock__page-lede">
                     Side Eye lives in Chrome’s side panel — beside the tab you’re on.
@@ -214,8 +218,8 @@
                   <div class="se-bottom-panel">
                     <div class="se-profile-bar">
                       <span class="se-profile-picker-btn">
-                        <span class="se-profile-picker-dot se-profile-picker-dot--ollama"></span>
-                        <span class="se-profile-picker-label">Ollama · gemma2:latest</span>
+                        <span class="se-profile-picker-dot se-profile-picker-dot--litertlm"></span>
+                        <span class="se-profile-picker-label">LiteRT-LM · Gemma 4 E2B</span>
                         <span class="se-profile-picker-chevron">▾</span>
                       </span>
                     </div>
@@ -279,20 +283,33 @@
         <div class="section__intro">
           <p class="eyebrow">Features</p>
           <h2>Built for browsing with a local LLM</h2>
-          <p>Everything runs where you already keep your models — on your machine, in your browser.</p>
+          <p>On-device in the browser by default — or point Side Eye at models you already run on your machine.</p>
         </div>
         <div class="feature-grid">
           <article class="feature-card">
+            <h3>On-device Gemma 4</h3>
+            <p>
+              Chat with <a href="https://ai.google.dev/gemma/docs/core" target="_blank" rel="noopener noreferrer">Gemma 4</a>
+              (E2B or E4B) via
+              <a href="https://ai.google.dev/edge/litert-lm/js" target="_blank" rel="noopener noreferrer">LiteRT-LM</a>
+              and WebGPU — no local server required. Download the model once; inference stays in Chrome.
+            </p>
+          </article>
+          <article class="feature-card">
             <h3>Side panel chat</h3>
-            <p>Open Side Eye beside any tab. Multiple chat tabs, streaming markdown replies, and a profile picker for LM Studio or Ollama.</p>
+            <p>Open Side Eye beside any tab. Multiple chat tabs, streaming markdown replies, and a profile picker for LiteRT-LM, LM Studio, or Ollama.</p>
           </article>
           <article class="feature-card">
             <h3>Page context</h3>
             <p>Toggle the eye to include URL, selection, and readable page text — only when your message needs it. Ignore sensitive domains entirely.</p>
           </article>
           <article class="feature-card">
+            <h3>LM Studio &amp; Ollama</h3>
+            <p>Prefer your own stack? Connect LM Studio or Ollama for vision models, larger contexts, and MCP tools — still on your machine, not our cloud.</p>
+          </article>
+          <article class="feature-card">
             <h3>Vision &amp; images</h3>
-            <p>Attach up to eight images per message. Vision works with capable local models through LM Studio or Ollama’s native APIs.</p>
+            <p>Attach up to eight images per message with capable models through LM Studio or Ollama. Image attach is disabled for text-only LiteRT-LM.</p>
           </article>
           <article class="feature-card">
             <h3>Quick actions</h3>
@@ -304,11 +321,7 @@
           </article>
           <article class="feature-card">
             <h3>MCP tools via LM Studio</h3>
-            <p>Give local models real capabilities through LM Studio’s MCP support — plug in tools like Brave Search for live internet access, so your on-device LLM can reach beyond its training data.</p>
-          </article>
-          <article class="feature-card">
-            <h3>Your settings</h3>
-            <p>Dark or light theme, font size, privacy ignore lists, and per-profile temperature and context length.</p>
+            <p>Give local models real capabilities through LM Studio’s MCP support — plug in tools like Brave Search for live internet access, so your LLM can reach beyond its training data.</p>
           </article>
         </div>
       </section>
@@ -322,22 +335,27 @@
           <li class="step">
             <span class="step__index">1</span>
             <div>
-              <h3>Run a local model</h3>
-              <p>Start LM Studio or <code>ollama serve</code> on your machine. Enable <strong>CORS</strong> in LM Studio server settings, or set <code>OLLAMA_ORIGINS</code> for Ollama. Side Eye talks to <code>localhost</code> — no API keys required for local profiles.</p>
+              <h3>Install the extension</h3>
+              <p>Add Side Eye from the <strong>Chrome Web Store</strong> and open the side panel from the toolbar. Chrome with <strong>WebGPU</strong> is recommended for on-device chat.</p>
             </div>
           </li>
           <li class="step">
             <span class="step__index">2</span>
             <div>
-              <h3>Install the extension</h3>
-              <p>Add Side Eye from the <strong>Chrome Web Store</strong>, open the side panel from the toolbar, and pick your AI profile in the footer.</p>
+              <h3>Load a model</h3>
+              <p>
+                <strong>LiteRT-LM</strong> is on by default — in Options, click <strong>Load model</strong> once to download Gemma 4.
+                Or connect <a href="https://lmstudio.ai/" target="_blank" rel="noopener noreferrer">LM Studio</a> /
+                <a href="https://ollama.com/" target="_blank" rel="noopener noreferrer">Ollama</a> (enable CORS /
+                <code>OLLAMA_ORIGINS</code>) and pick that profile in the footer.
+              </p>
             </div>
           </li>
           <li class="step">
             <span class="step__index">3</span>
             <div>
               <h3>Chat with context</h3>
-              <p>Turn on page context when you want the current tab included. Ask naturally — “summarize this page”, “explain this selection”, or paste images.</p>
+              <p>Turn on page context when you want the current tab included. Ask naturally — “summarize this page”, “explain this selection”, or attach images with LM Studio / Ollama vision models.</p>
             </div>
           </li>
         </ol>
@@ -349,9 +367,15 @@
           <h2>Your data stays yours</h2>
           <ul class="privacy-list">
             <li>Chat history lives in <strong>chrome.storage.local</strong> on your device.</li>
-            <li>Page excerpts are read in-browser and sent only to <strong>your local model</strong>.</li>
+            <li>
+              With <strong>LiteRT-LM</strong>, prompts and replies stay in the browser (WebGPU). With LM Studio or
+              Ollama, page and chat content go only to the server URL you configure — usually <code>localhost</code>.
+            </li>
             <li>Ignored domains are never read — banking, mail, or anything you block in settings.</li>
-            <li>Optional TTS models download from Hugging Face once; speech runs on-device.</li>
+            <li>
+              Gemma 4 (LiteRT-LM) and optional Supertonic TTS models download from Hugging Face once; inference and
+              speech run on-device.
+            </li>
           </ul>
         </div>
       </section>
@@ -367,10 +391,10 @@
             <div class="install-panel install-panel--github">
               <div class="install-panel__body">
                 <h3>Docs on GitHub</h3>
-                <p>Feature overview, LM Studio and Ollama setup, MCP tools, voice options, and troubleshooting — all in the public README.</p>
+                <p>Feature overview, LiteRT-LM / Gemma 4, LM Studio and Ollama setup, MCP tools, voice options, and troubleshooting — all in the public README.</p>
                 <ol class="install-steps">
                   <li>Open the <strong>side-eye-docs</strong> repository on GitHub.</li>
-                  <li>Read setup notes for LM Studio CORS, Ollama <code>OLLAMA_ORIGINS</code>, and MCP tools.</li>
+                  <li>Read setup notes for LiteRT-LM, LM Studio CORS, Ollama <code>OLLAMA_ORIGINS</code>, and MCP tools.</li>
                   <li>Follow the Chrome Web Store steps on the right to install the extension.</li>
                 </ol>
               </div>
@@ -385,11 +409,11 @@
                 <ol class="install-steps">
                   <li>Click <strong>Add to Chrome</strong> on the Chrome Web Store listing.</li>
                   <li>Confirm the install when Chrome prompts you.</li>
-                  <li>Pin Side Eye from the extensions menu, then configure LM Studio or Ollama in Options.</li>
+                  <li>Pin Side Eye from the extensions menu, then load LiteRT-LM (or connect LM Studio / Ollama) in Options.</li>
                 </ol>
               </div>
               <div class="install-panel__actions">
-                <a class="btn btn--primary" href="#install" data-store-link id="chrome-store-link">Add to Chrome — Free</a>
+                <a class="btn btn--primary" href="https://chromewebstore.google.com/detail/side-eye/mjlmbddfgplihcadmpaeggdeneljklnh" target="_blank" rel="noopener noreferrer" data-store-link id="chrome-store-link">Add to Chrome — Free</a>
               </div>
             </div>
           </div>

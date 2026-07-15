@@ -1186,6 +1186,11 @@ h3 {
   flex-shrink: 0;
 }
 
+.se-profile-picker-dot--litertlm {
+  background: #34a853;
+  box-shadow: 0 0 5px color-mix(in srgb, #34a853 45%, transparent);
+}
+
 .se-profile-picker-dot--ollama {
   background: #51cf66;
   box-shadow: 0 0 5px color-mix(in srgb, #51cf66 45%, transparent);
@@ -1477,6 +1482,16 @@ h3 {
   background:
     radial-gradient(ellipse 80% 70% at 0% 50%, color-mix(in srgb, #2dd4bf 22%, transparent), transparent 58%),
     radial-gradient(ellipse 60% 50% at 100% 0%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 50%);
+}
+
+.feature-card:nth-child(8) {
+  border-color: color-mix(in srgb, #81c995 40%, var(--border));
+}
+
+.feature-card:nth-child(8)::before {
+  background:
+    radial-gradient(ellipse 75% 65% at 85% 15%, color-mix(in srgb, #34a853 22%, transparent), transparent 55%),
+    radial-gradient(ellipse 60% 50% at 10% 90%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 50%);
 }
 
 .feature-card h3 {

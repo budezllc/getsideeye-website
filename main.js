@@ -1,6 +1,5 @@
-// Set this when the Chrome Web Store listing is published.
-// Example: https://chromewebstore.google.com/detail/side-eye/abcdefghijklmnopqrstuvwxyz
-const CHROME_WEB_STORE_URL = "";
+const CHROME_WEB_STORE_URL =
+  "https://chromewebstore.google.com/detail/side-eye/mjlmbddfgplihcadmpaeggdeneljklnh";
 
 const storeUrl = CHROME_WEB_STORE_URL.trim();
 const hasStoreUrl =

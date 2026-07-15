@@ -1,6 +1,6 @@
 # getsideeye.com
 
-Static single-page site for [Side Eye](https://getsideeye.com) — the Chrome extension for local AI chat in the side panel.
+Static single-page site for [Side Eye](https://getsideeye.com) — the Chrome extension for local AI chat in the side panel (on-device LiteRT-LM / Gemma 4, plus LM Studio and Ollama).
 
 No build step. Deploy the repo root as-is.
 
@@ -51,12 +51,12 @@ Drag-and-drop this folder at [app.netlify.com/drop](https://app.netlify.com/drop
 | `terms.html` | Terms of service |
 | `support.html` | Support / contact page |
 | `styles.css` | Shared styles |
-| `main.js` | Set `CHROME_WEB_STORE_URL` when the listing is published |
+| `main.js` | Chrome Web Store URL for Add to Chrome buttons |
 | `assets/` | Icons and Open Graph image |
 
 **Chrome Web Store:** Privacy policy URL must be `https://getsideeye.com/privacy-policy.html`. See `CHROME_WEB_STORE.md` in the extension repo for the full submission checklist.
 
-When the Chrome Web Store listing is live, update the **Install** section in `index.html` if needed and set `CHROME_WEB_STORE_URL` in `main.js`.
+Chrome Web Store listing: https://chromewebstore.google.com/detail/side-eye/mjlmbddfgplihcadmpaeggdeneljklnh
 
 ## Related
 

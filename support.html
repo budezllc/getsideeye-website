@@ -36,7 +36,10 @@
         <p class="eyebrow">Help</p>
         <h1>Support</h1>
 
-        <p>Side Eye is a local-first Chrome extension. Most issues relate to LM Studio, Ollama, or browser permissions.</p>
+        <p>
+          Side Eye is a local-first Chrome extension. Most issues relate to LiteRT-LM (on-device Gemma 4),
+          LM Studio, Ollama, WebGPU, or browser permissions.
+        </p>
 
         <h2>Contact</h2>
         <p>
@@ -46,16 +49,27 @@
 
         <h2>Before you write</h2>
         <ul>
-          <li>Chrome version (need <strong>114+</strong> for the side panel)</li>
+          <li>Chrome version (need <strong>114+</strong> for the side panel; WebGPU for LiteRT-LM)</li>
           <li>Side Eye version (from <code>chrome://extensions</code>)</li>
-          <li>AI profile in use (LM Studio or Ollama) and whether the local server is running</li>
+          <li>AI profile in use (LiteRT-LM, LM Studio, or Ollama) and whether a local server is running if needed</li>
           <li>Steps to reproduce and any error text from the side panel</li>
         </ul>
 
         <h2>Common fixes</h2>
         <ul>
-          <li><strong>No reply / connection error</strong> — confirm LM Studio or <code>ollama serve</code> is running and the server URL in Options matches.</li>
+          <li>
+            <strong>LiteRT-LM / WebGPU unavailable</strong> — LiteRT-LM needs WebGPU. Confirm Chrome shows a green
+            <strong>WebGPU ready</strong> badge under Options → LiteRT-LM. Update Chrome, try a discrete GPU if
+            available, or switch to LM Studio / Ollama instead.
+          </li>
+          <li>
+            <strong>LiteRT-LM model not loaded</strong> — in Options → LiteRT-LM, click <strong>Load model</strong>
+            and wait for the download (about 2&nbsp;GB for E2B, 4&nbsp;GB for E4B). Use
+            <strong>Retry download</strong> or <strong>Re-download model</strong> if it fails.
+          </li>
+          <li><strong>No reply / connection error (LM Studio or Ollama)</strong> — confirm LM Studio or <code>ollama serve</code> is running and the server URL in Options matches.</li>
           <li><strong>CORS / 403 from local server</strong> — Side Eye is a Chrome extension and needs CORS enabled on your AI server. <strong>LM Studio:</strong> Local Server &rarr; Server Settings &rarr; turn on <strong>CORS</strong>. <strong>Ollama:</strong> set <code>OLLAMA_ORIGINS</code> to <code>*</code>, then restart Ollama. On Windows, add it under Environment Variables; on macOS, run <code>launchctl setenv OLLAMA_ORIGINS &quot;*&quot;</code> and quit/reopen the Ollama app.</li>
+          <li><strong>Image attach disabled</strong> — LiteRT-LM is text-only. Switch to LM Studio or Ollama with a vision model to attach images.</li>
           <li><strong>Page context empty</strong> — enable the eye icon; check the domain is not on your ignore list.</li>
           <li><strong>Voice not working</strong> — enable Speech in Options and wait for the model download to finish; try Re-download models if needed.</li>
           <li><strong>Extension not visible</strong> — click the puzzle icon in Chrome and pin Side Eye; then open the side panel from the toolbar icon.</li>
